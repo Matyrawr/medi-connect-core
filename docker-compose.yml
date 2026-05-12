@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  gateway:
+    build: ./frontend-citas
+    environment:
+      PACIENTES_SERVICE_URL: http://pacientes-service:8081
+      DOCTORES_SERVICE_URL: http://doctores-service:8082
+      CITAS_SERVICE_URL: http://citas-service:8083
+    ports:
+      - "8080:8080"
+  pacientes-service:
+    build: ./ms-pacientes
+    ports:
+      - "8081:8081"
+  doctores-service:
+    build: ./ms-doctores
+    ports:
+      - "8082:8082"
+  citas-service:
+    build: ./ms-citas
+    ports:
+      - "8083:8083"
